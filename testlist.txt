@@ -1,0 +1,1 @@
+train_data/images/Numazu_20170907145417.jpg

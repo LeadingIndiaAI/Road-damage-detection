@@ -1,0 +1,3 @@
+cfg = cfg/yolo-tiny-rd.cfg
+train = trainlist.txt
+labelnames = voc.names

@@ -1,2 +1,41 @@
-# Road-damage-detection
-Keeping roads in a good condition is vital to safe driving. To monitor the degradation of road conditions is one of the important component in transportation maintenance which is labor intensive and requires domain expertise. Automatic detection of road damage is an important task in transportation maintenance for driving safety assurance. The intensity of damage and complexity of the background, makes this process a challenging task. A deep-learning based methodology for damage detection is proposed in this project after being inspired by recent success on applying Deep- learning in Computer Sciences. A dataset of 9,053 images is taken with the help of a low cost smart phone and a quantitative evaluation is conducted, which in turn demonstrates that the superior damage detection performance using deep-learning methods perform extremely well when compared with features extracted with existing hand-craft methods. Using convolutional neural networks to train the damage detection model with our dataset, we use the state-of-the-art object detection method, and compute the accuracy and runtime speed on a GPU server. At the end, we show that the type of damage can be distinguished into eight types with acceptable accuracy by applying the proposed object detection method.
+# Road_Damage_Detection
+## Introduction
+The following YOLO(You Only Look Once) algorithm uses Keras implementation.
+For futher information refer to: http://guanghan.info/blog/en/my-works/train-yolo/
+
+Dataset is taken from : https://github.com/sekilab/RoadDamageDetector.
+Annotated images are presented in the same format as PASCAL VOC.
+
+## Libraries used:
+* opencv-python
+* tensorflow
+* keras
+* pillow
+* numpy
+
+## Usage
+To train the model use following command:
+  ```
+  python src/yolo.py train [Pretrained_Model.h5]
+  ```
+If saved Keras model option is used, it will read the pretrained model and do training incrmentally.
+If the pretrained model option is not used training is done from scratch.
+
+For prediction use:
+  ```
+  python src/yolo.py test Pretrained_Model.h5 testlist.txt
+  ```
+
+## Information about code:
+Code explanation:
+* workingcfg.txt : The path to cfg file, training list and voc.names is put in this file
+* yolo.py : This is used for training and testing the data
+* yolodata.py : Read train_data/train.txt file, then generate resized X_train and Y_train numpy matrix
+* ddd.py : Make custom YOLO loss function. For further information about YOLO loss eqaution refer to:
+           http://pjreddie.com/media/files/papers/yolo_1.pdf
+* kerasmodel.py : Create Keras model according to cfg file
+* parse.py : This is used to parse the cfg file
+* cfgconst.py : The parse.py parses the cfg file after this program reads the workingcfg.txt file.
+
+### Running environment : 
+    The above code uses Keras with tensorflow backend
